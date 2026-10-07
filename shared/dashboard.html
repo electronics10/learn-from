@@ -177,6 +177,10 @@ function lesson(l){return (l.blocks||[]).map(block).join('')}
 try{D=JSON.parse(document.getElementById('data').textContent)}catch(e){
   app.innerHTML='<p class="kicker">learn-from · dashboard</p><div class="err">The data block is not valid JSON, so the page cannot be drawn.\n\n'+esc(e.message)+'\n\nAsk Claude to fix the data block (usually a single backslash: write \\\\kappa, not \\kappa).</div>';return}
 document.title=(D.title||'Study')+' · learn-from';
+(function(){var w=(D.title||'?').replace(/\(.*?\)/g,'').match(/[\p{L}\p{N}]+/gu)||['?'],
+  i=(w.length>1?w[0][0]+w[w.length-1][0]:w[0].slice(0,2)).toUpperCase(),
+  svg="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='#D97757'/><text x='32' y='44' font-size='30' font-weight='700' font-family='sans-serif' fill='#fff' text-anchor='middle'>"+i+"</text></svg>",
+  l=document.createElement('link');l.rel='icon';l.href='data:image/svg+xml,'+encodeURIComponent(svg);document.head.appendChild(l)})();
 var C=D.current||{},U=D.units||[],h='';
 var unit=U.filter(function(u){return u.id===C.unit})[0]||{id:C.unit,title:''};
 h+='<p class="kicker">learn-from · dashboard</p><h1>'+inl(D.title)+'</h1>';
