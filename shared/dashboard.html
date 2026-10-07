@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>learn-from</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+<script>try{var t=localStorage.getItem('lf-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+:root{--bg:#fffff8;--ink:#1d1d1b;--muted:#6b6a63;--rule:#d9d6c8;--panel:#f3f1e7;--accent:#8a2b1a;--accent-soft:#f4e7e2;
+  --solid:#2f6b3a;--solid-bg:#e5f0e3;--shaky:#9a6212;--shaky-bg:#f7ecd8;--gap:#9b2c2c;--gap-bg:#f6e3e1;
+  --serif:'Source Serif 4',Georgia,serif;--sans:'IBM Plex Sans',-apple-system,sans-serif;--mono:'IBM Plex Mono',Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1b1a17;--ink:#e9e6da;--muted:#a5a294;--rule:#3a382f;--panel:#25241f;--accent:#e08a6f;--accent-soft:#3a2a24;
+  --solid:#9fd2a3;--solid-bg:#22301f;--shaky:#e7bd72;--shaky-bg:#352b1a;--gap:#f0a39b;--gap-bg:#3a2220}}
+:root[data-theme=dark]{--bg:#1b1a17;--ink:#e9e6da;--muted:#a5a294;--rule:#3a382f;--panel:#25241f;--accent:#e08a6f;--accent-soft:#3a2a24;
+  --solid:#9fd2a3;--solid-bg:#22301f;--shaky:#e7bd72;--shaky-bg:#352b1a;--gap:#f0a39b;--gap-bg:#3a2220}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--serif)}
+main{max-width:46rem;margin:0 auto;padding:2.5rem 1rem 5rem}
+.kicker{font:600 .75rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0}
+h1{font-weight:400;font-size:2rem;line-height:1.2;margin:.3rem 0 .4rem}
+h2{font-weight:400;font-style:italic;font-size:1.3rem;margin:2.6rem 0 .7rem;padding-top:.5rem;border-top:1px solid var(--rule)}
+.meta{font:.82rem var(--sans);color:var(--muted);display:flex;flex-wrap:wrap;gap:.3rem 1.2rem}
+.meta b{color:var(--ink);font-weight:600}
+.toggle{position:fixed;top:.8rem;right:.8rem;font:.78rem var(--sans);background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:.3rem .6rem;cursor:pointer}
+.label{font:600 .72rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 .35rem}
+.turn{margin-top:1.8rem;padding:1.1rem 1.4rem;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0}
+.turn .step{font:600 .85rem var(--sans);margin-bottom:.25rem}
+.turn .text{font-size:1.12rem;line-height:1.55}
+.lesson{margin-top:1.6rem}
+.block{margin:0 0 1.2rem}
+.block .label{color:var(--muted)}
+.block p{margin:.3rem 0}.block ul{margin:.3rem 0;padding-left:1.3rem}.block li{margin:.2rem 0}
+.block.note{font-size:.92rem;color:var(--muted);border-left:2px solid var(--rule);padding-left:.9rem}
+.block.svg{background:var(--panel);border-radius:6px;padding:1rem}
+.block.svg svg{display:block;margin:0 auto;max-width:100%;max-height:15rem;height:auto}
+.block.svg svg .ink{stroke:var(--ink);fill:none}.block.svg svg .acc{stroke:var(--accent);fill:none}
+.block.svg svg text{fill:var(--ink);stroke:none;font:13px var(--sans)}
+details.old{margin:.6rem 0;font:.9rem var(--sans)}
+details.old summary{cursor:pointer;color:var(--muted)}
+details.old[open]{font:inherit}
+details.old[open] summary{font:.9rem var(--sans);margin-bottom:.8rem}
+.next{background:var(--panel);border-radius:6px;padding:1.1rem 1.4rem .4rem}
+.item{display:grid;grid-template-columns:2.6rem 1fr;gap:1rem;padding:.75rem 0;border-top:1px solid var(--rule)}
+.label+.item{border-top:0}
+.item .k{font:600 .8rem var(--mono);color:var(--accent);padding-top:.2rem}
+.item p{margin:0;line-height:1.5}
+.item .on{display:block;margin-top:.2rem;font:.75rem var(--sans);color:var(--muted)}
+.bar{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;margin:.2rem 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+.barlabel{font:.78rem var(--sans);color:var(--muted)}
+.toc{list-style:none;padding:0;margin:.5rem 0 1.4rem;font:.9rem var(--sans)}
+.toc li{display:grid;grid-template-columns:1.4rem 1fr auto;gap:.5rem;align-items:baseline;padding:.3rem .5rem}
+.toc li::before{content:'○';color:var(--muted)}
+.toc .done{color:var(--muted)}.toc .done::before{content:'✓';color:var(--solid)}
+.toc .now{background:var(--accent-soft);font-weight:600}.toc .now::before{content:'●';color:var(--accent)}
+.toc .now.first{border-radius:4px 4px 0 0}.toc .now.last{border-radius:0 0 4px 4px}.toc .now.first.last{border-radius:4px}
+.toc .skip{color:var(--muted);text-decoration:line-through}
+.toc .mode{font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.ideas{list-style:none;padding:0;margin:0}
+.idea{display:grid;grid-template-columns:5.2rem 1fr;gap:.2rem .8rem;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+.idea.now{background:var(--accent-soft);margin:0 -.6rem;padding:.6rem}
+.idea .why{grid-column:2;font-size:.88rem;color:var(--muted)}
+.badge{font:600 .68rem var(--sans);letter-spacing:.05em;text-transform:uppercase;border-radius:3px;padding:.15rem .4rem;align-self:start;text-align:center}
+.solid{color:var(--solid);background:var(--solid-bg)}.shaky{color:var(--shaky);background:var(--shaky-bg)}.gap{color:var(--gap);background:var(--gap-bg)}
+.todo{color:var(--muted);border:1px dashed var(--rule)}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0}
+.chip{position:relative;width:2.1rem;height:2.1rem;display:grid;place-items:center;font:600 .78rem var(--sans);border-radius:4px;border:1px solid var(--rule);color:var(--muted)}
+.chip.p1{background:var(--panel);color:var(--ink)}
+.chip.now{border-color:var(--accent);background:var(--accent);color:var(--bg)}
+.chip .dot{position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--shaky)}
+.chip .dot.g{background:var(--gap)}
+.legend{font:.75rem var(--sans);color:var(--muted)}
+.err{background:var(--gap-bg);color:var(--gap);font:.9rem var(--mono);padding:1rem;border-radius:6px;white-space:pre-wrap}
+.banner{margin-top:1.2rem;padding:.6rem 1rem;border:1px dashed var(--accent);border-radius:6px;font:.88rem var(--sans)}
+.banner b{color:var(--accent)}
+.side{font:.82rem var(--sans);color:var(--muted);margin-bottom:.4rem}
+.side b{color:var(--ink)}
+.block.task{border:1px solid var(--rule);border-radius:6px;padding:.8rem 1rem}
+.block.task .chk{font:.72rem var(--sans);color:var(--muted)}
+.block.task .pred{margin-top:.5rem;font-size:.92rem;border-left:2px solid var(--accent);padding-left:.7rem}
+.block.task .file{font:.8rem var(--mono);color:var(--muted)}
+.trust{font:.72rem var(--sans);color:var(--shaky);margin-left:.4rem}
+.src{font:.82rem var(--sans);color:var(--muted);margin:.1rem 0 .6rem}
+.chip.parked{border-style:dashed}
+@media print{.toggle{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<button class="toggle" id="tg" type="button"></button>
+<main id="app"></main>
+
+<!-- ======== DATA: the only part Claude edits. Valid JSON; double every backslash (\\( \\kappa \\)). Fields: see WORKSPACE.md ======== -->
+<script type="application/json" id="data">
+{
+  "title": "All of Statistics (Wasserman)",
+  "goal": "follow the source",
+  "chunk": "M",
+  "support": "L2",
+  "updated": "2026-10-07 14:05",
+  "turn": {
+    "step": "Task · Simulation 1.1",
+    "text": "Write down your prediction first (see the task below), then run `tasks/u01-coins.py` and explain any difference."
+  },
+  "side": null,
+  "request": null,
+  "queue": [
+    {"key": "Q1", "text": "Why is \\(\\mathbb P(A\\cup B)\\) not simply \\(\\mathbb P(A)+\\mathbb P(B)\\)?", "on": "Axioms and consequences"},
+    {"key": "1.3", "text": "Prove that if \\(A_1\\supset A_2\\supset\\cdots\\) then \\(\\mathbb P(\\bigcap A_i)=\\lim \\mathbb P(A_i)\\).", "on": "Task · answer · core"}
+  ],
+  "units": [
+    {"id": "u01", "title": "Probability", "source": "Wasserman ch. 1", "state": "now", "pass": 1, "shaky": 1, "gap": 0},
+    {"id": "u02", "title": "Random Variables", "source": "Wasserman ch. 2", "state": "todo", "pass": 0},
+    {"id": "u03", "title": "Expectation", "source": "Wasserman ch. 3", "state": "todo", "pass": 0},
+    {"id": "u04", "title": "Inequalities", "source": "Wasserman ch. 4", "state": "todo", "pass": 0},
+    {"id": "u05", "title": "Convergence of Random Variables", "source": "Wasserman ch. 5", "state": "todo", "pass": 0},
+    {"id": "u06", "title": "Measure-theory intuition", "source": "", "state": "parked", "pass": 0}
+  ],
+  "current": {
+    "unit": "u01",
+    "chunk": 2,
+    "chunks": 3,
+    "parts": [
+      {"id": "1.1", "title": "Introduction", "mode": "skim", "state": "done"},
+      {"id": "1.2", "title": "Sample Spaces and Events", "mode": "close", "state": "done"},
+      {"id": "1.3", "title": "Probability", "mode": "close", "state": "done"},
+      {"id": "1.4", "title": "Probability on Finite Sample Spaces", "mode": "skim", "state": "now"},
+      {"id": "1.5", "title": "Independent Events", "mode": "close", "state": "now"},
+      {"id": "1.6", "title": "Conditional Probability", "mode": "close"},
+      {"id": "1.7", "title": "Bayes' Theorem", "mode": "close"},
+      {"id": "1.8", "title": "Bibliographic Remarks", "mode": "skip"}
+    ],
+    "ideas": [
+      {"text": "Sample space; events as sets", "status": "solid"},
+      {"text": "Axioms and their consequences (inclusion–exclusion, continuity of \\(\\mathbb P\\))", "status": "shaky", "why": "Explains continuity, but not why the proof builds disjoint \\(B_i\\)."},
+      {"text": "Independence: \\(\\mathbb P(AB)=\\mathbb P(A)\\mathbb P(B)\\); disjoint ≠ independent", "status": "todo", "now": true},
+      {"text": "Conditional probability and Bayes' theorem", "status": "todo"}
+    ]
+  },
+  "lessons": {
+    "u01": [
+      {"chunk": 1, "title": "§1.1–1.3 · pp. 3–7", "blocks": [
+        {"type": "primer", "text": "**Picture.** \\(\\Omega\\) is a canvas, an event is a region, and \\(\\mathbb P\\) is like *area* with total area 1."}
+      ]},
+      {"chunk": 2, "title": "§1.4–1.5 · pp. 7–10", "blocks": [
+        {"type": "primer", "text": "**Independence** means knowing \\(B\\) happened does not change your bet on \\(A\\). Disjoint events are the opposite: if \\(B\\) happened, \\(A\\) certainly did not."},
+        {"type": "task", "key": "Simulation 1.1", "check": "auto", "text": "Toss two fair coins 10 000 times. Estimate \\(\\mathbb P(\\text{first}=H)\\), \\(\\mathbb P(\\text{second}=H)\\) and \\(\\mathbb P(\\text{both}=H)\\). The test passes when your product rule holds to within 0.02.", "predict": "Before running: which of the three numbers will be furthest from its exact value, and why?", "file": "tasks/u01-coins.py"},
+        {"type": "note", "text": "Wasserman writes \\(AB\\) for \\(A\\cap B\\); many texts use \\(A\\cap B\\) only."}
+      ]}
+    ]
+  }
+}
+</script>
+
+<!-- ======== RENDERER: never edited per workspace. ======== -->
+<script>
+(function(){
+var app=document.getElementById('app'),D;
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function inl(s){return esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/(^|[\s(“])\*([^*\s][^*]*?)\*(?=[\s.,;:)”]|$)/g,'$1<i>$2</i>')}
+function md(s){return String(s||'').split(/\n\s*\n/).map(function(par){
+  var lines=par.split('\n'),out='',list=[];
+  lines.forEach(function(l){if(/^\s*- /.test(l))list.push('<li>'+inl(l.replace(/^\s*- /,''))+'</li>');else if(l.trim()){if(list.length){out+='</p><ul>'+list.join('')+'</ul><p>';list=[]}out+=inl(l)+' '}});
+  var html='<p>'+out+'</p>'+(list.length?'<ul>'+list.join('')+'</ul>':'');return html.replace(/<p>\s*<\/p>/g,'')}).join('')}
+var NAMES={primer:'Primer',example:'Worked example',note:'Note',hint:'Hint',solution:'Solution',fix:'Fix',side:'Side topic'};
+var CHECK={answer:'checked by Claude',auto:'checked by a test or target',report:'you run it and report what you see'};
+function block(b){
+  if(b.type==='svg')return '<div class="block svg">'+(b.svg||'')+(b.caption?'<p class="barlabel">'+inl(b.caption)+'</p>':'')+'</div>';
+  if(b.type==='task')return '<div class="block task"><div class="label">Task · '+inl(b.key||'')+'</div><div class="chk">'+esc(CHECK[b.check]||b.check||'')+'</div>'+md(b.text)+(b.predict?'<div class="pred"><b>Predict first.</b> '+inl(b.predict)+'</div>':'')+(b.file?'<div class="file">'+esc(b.file)+'</div>':'')+'</div>';
+  return '<div class="block '+esc(b.type)+'"><div class="label">'+esc(b.label||NAMES[b.type]||b.type)+'</div>'+md(b.text)+'</div>'}
+function lesson(l){return (l.blocks||[]).map(block).join('')}
+try{D=JSON.parse(document.getElementById('data').textContent)}catch(e){
+  app.innerHTML='<p class="kicker">learn-from · dashboard</p><div class="err">The data block is not valid JSON, so the page cannot be drawn.\n\n'+esc(e.message)+'\n\nAsk Claude to fix the data block (usually a single backslash: write \\\\kappa, not \\kappa).</div>';return}
+document.title=(D.title||'Study')+' · learn-from';
+var C=D.current||{},U=D.units||[],h='';
+var unit=U.filter(function(u){return u.id===C.unit})[0]||{id:C.unit,title:''};
+h+='<p class="kicker">learn-from · dashboard</p><h1>'+inl(D.title)+'</h1>';
+h+='<div class="meta"><span>Goal: <b>'+inl(D.goal||'follow the source')+'</b></span>'+(D.chunk?'<span>Chunk <b>'+esc(D.chunk)+'</b></span>':'')+(D.support?'<span>Support <b>'+esc(D.support)+'</b></span>':'')+'<span>Updated <b>'+esc(D.updated)+'</b> — ⌘R to refresh</span></div>';
+if(D.request&&D.request.text)h+='<div class="banner"><b>Plan change pending.</b> '+inl(D.request.text)+'</div>';
+if(D.turn&&D.turn.text)h+='<section class="turn"><div class="label">Your turn</div>'+(D.side&&D.side.topic?'<div class="side">Side topic: <b>'+inl(D.side.topic)+'</b>'+(D.side.from?' · from '+inl(D.side.from):'')+' · then back to the unit</div>':'')+(D.turn.step?'<div class="step">'+inl(D.turn.step)+'</div>':'')+'<div class="text">'+md(D.turn.text)+'</div></section>';
+var L=((D.lessons||{})[String(C.unit)]||[]).slice().sort(function(a,b){return b.chunk-a.chunk});
+if(L.length){h+='<section class="lesson"><div class="label">This chunk · '+inl(L[0].title||('chunk '+L[0].chunk))+'</div>'+lesson(L[0]);
+  if(L.length>1)h+=L.slice(1).map(function(l){return '<details class="old"><summary>Earlier: '+inl(l.title||('chunk '+l.chunk))+'</summary>'+lesson(l)+'</details>'}).join('');
+  h+='</section>'}
+var Q=(D.queue||[]).slice(0,5);
+if(Q.length)h+='<h2>Up next</h2><section class="next"><div class="label">Questions and tasks</div>'+Q.map(function(q){return '<div class="item"><span class="k">'+esc(q.key)+'</span><div><p>'+inl(q.text)+'</p>'+(q.on?'<span class="on">'+inl(q.on)+'</span>':'')+'</div></div>'}).join('')+'</section>';
+if(C.unit){
+var S=C.parts||[],counted=S.filter(function(s){return s.mode!=='skip'}),done=counted.filter(function(s){return s.state==='done'}).length;
+h+='<h2>'+inl(unit.title||C.unit)+'</h2>';
+h+='<div class="src">'+(unit.source?inl(unit.source):'Claude-written material<span class="trust">lower trust — find a proper source</span>')+'</div>';
+if(S.length){h+='<div class="bar"><i style="width:'+(counted.length?Math.round(100*done/counted.length):0)+'%"></i></div>';
+h+='<div class="barlabel">'+done+' of '+counted.length+' parts done'+(C.chunks?' · chunk '+esc(C.chunk)+' of '+esc(C.chunks):'')+'</div>';
+var firstNow=-1,lastNow=-1;S.forEach(function(s,i){if(s.state==='now'){if(firstNow<0)firstNow=i;lastNow=i}});
+h+='<ol class="toc">'+S.map(function(s,i){var c=s.mode==='skip'?'skip':(s.state==='done'?'done':(s.state==='now'?'now':''));
+  if(c==='now'){if(i===firstNow)c+=' first';if(i===lastNow)c+=' last'}
+  return '<li class="'+c+'"><span>'+esc(s.id)+' '+inl(s.title)+(i===firstNow?' — you are here':'')+'</span><span class="mode">'+esc(s.mode||'')+'</span></li>'}).join('')+'</ol>'}
+var STAT={solid:'solid',shaky:'shaky',gap:'gap',todo:'to do'};
+h+='<ul class="ideas">'+(C.ideas||[]).map(function(d){var st=STAT[d.status]?d.status:'todo';
+  return '<li class="idea'+(d.now?' now':'')+'"><span class="badge '+st+'">'+STAT[st]+'</span><span>'+inl(d.text)+'</span>'+(d.why&&st!=='solid'?'<span class="why">'+inl(d.why)+'</span>':'')+'</li>'}).join('')+'</ul>'}
+if(U.length){h+='<h2>Plan</h2><div class="chips">'+U.map(function(u,i){var cls='chip'+(u.pass>0?' p1':'')+(u.id===C.unit?' now':'')+(u.state==='parked'?' parked':'');
+  var dot=(u.gap>0)?'<span class="dot g"></span>':(u.shaky>0?'<span class="dot"></span>':'');
+  var tip=(i+1)+' · '+u.title+(u.source?' — '+u.source:' — Claude-written')+(u.state==='parked'?' — parked':'')+(u.pass>0?' — pass '+u.pass+(u.last?' · '+u.last:'')+(u.shaky||u.gap?' · '+(u.shaky||0)+' shaky, '+(u.gap||0)+' gap':''):(u.state==='parked'?'':' — not started'));
+  return '<span class="'+cls+'" title="'+esc(tip)+'">'+(i+1)+dot+'</span>'}).join('')+'</div>';
+  h+='<div class="legend">Filled = studied at least once · dashed = parked · dot = shaky (amber) or gap (red) ideas · hover a unit for details</div>'}
+app.innerHTML=h;
+})();
+(function(){var r=document.documentElement,b=document.getElementById('tg');
+function cur(){return r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function label(){b.textContent=cur()==='dark'?'☀ Light':'☾ Dark'}
+b.onclick=function(){var n=cur()==='dark'?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('lf-theme',n)}catch(e){}label()};label()})();
+</script>
+</body>
+</html>

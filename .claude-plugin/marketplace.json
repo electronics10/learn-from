@@ -1,0 +1,16 @@
+{
+  "name": "learn-from",
+  "owner": {
+    "name": "electronics10"
+  },
+  "metadata": {
+    "description": "Textbook-first study workflow for Claude."
+  },
+  "plugins": [
+    {
+      "name": "learn-from",
+      "source": "./",
+      "description": "Study from textbooks and other sources: a planner, a study loop with Feynman checks and spaced re-passes, and a local dashboard. One command: /learn-from."
+    }
+  ]
+}
