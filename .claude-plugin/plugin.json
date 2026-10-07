@@ -1,6 +1,5 @@
 {
   "name": "learn-from",
-  "version": "0.1.1",
   "description": "Study from textbooks and other sources with a planner (syllabus), a study loop (Feynman checks, tasks, spaced re-passes) and a local dashboard. One command: /learn-from.",
   "author": { "name": "electronics10" },
   "keywords": ["learning", "textbook", "study", "feynman", "spaced-repetition"]
