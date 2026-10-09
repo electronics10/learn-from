@@ -88,12 +88,15 @@ details.old[open] summary{font:.9rem var(--sans);margin-bottom:.8rem}
 .trust{font:.72rem var(--sans);color:var(--shaky);margin-left:.4rem}
 .src{font:.82rem var(--sans);color:var(--muted);margin:.1rem 0 .6rem}
 .chip.parked{border-style:dashed}
-@media print{.toggle{display:none}body{background:#fff}}
+.foot{max-width:46rem;margin:0 auto;padding:0 1rem 2.5rem;font:.75rem var(--sans);color:var(--muted)}
+.foot code{font:.72rem var(--mono)}
+@media print{.toggle,.foot{display:none}body{background:#fff}}
 </style>
 </head>
 <body>
 <button class="toggle" id="tg" type="button"></button>
 <main id="app"></main>
+<footer class="foot">Want a history of your study? Run <code>git init</code> in this folder once, then <code>git add -A &amp;&amp; git commit -m "&lt;what you studied&gt;"</code> after each session.</footer>
 
 <!-- ======== DATA: the only part Claude edits. Valid JSON; double every backslash (\\( \\kappa \\)). Fields: see WORKSPACE.md ======== -->
 <script type="application/json" id="data">

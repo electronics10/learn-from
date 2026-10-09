@@ -8,11 +8,11 @@ A workspace is a folder named `<topic>.study/`.
 
 - **Default**: beside the main source file (the book's PDF or Markdown).
 - **No source file** (a course website, a codebase, a topic): ask the user once where to put it.
-- **Never inside a git repository** unless the user says so. Check with `git -C <dir> rev-parse --is-inside-work-tree` before creating.
 - Any path works: local disk, a synced vault, or a server. Nothing depends on the user's own computer.
 
 ```text
 <topic>.study/
+├── intent.md        # owner: syllabus
 ├── syllabus.md      # owner: syllabus
 ├── progress.md      # owner: study
 ├── dashboard.html   # owner: study (copied from shared/dashboard.html)
@@ -52,6 +52,24 @@ Rules:
 - Every unit names a **source span** (book chapter and pages, lecture, code lines). A unit with no source span says `source: Claude-written` and is treated as lower trust.
 - `needs:` lists unit IDs that must be studied first.
 - The order of the list is the study order.
+
+## intent.md (owner: syllabus)
+
+Why the user is studying this, written once at setup. `## Original` is never edited; later changes of aim are added under `## Changes`. `study` does not read it.
+
+```md
+# Intent — <topic>
+Recorded: 2026-10-07
+
+## Original
+- Want: <what the user wants from the subject, in their words>
+- Why: <the reason: a project, an exam, a job, curiosity>
+- Able to do at the end: <the target skill, or "follow the source">
+- Context: <deadline, background, constraints; omit if none>
+
+## Changes
+- 2026-11-02 · Now also need ch. 9 for a thesis chapter. (plan v3)
+```
 
 ## progress.md (owner: study)
 
