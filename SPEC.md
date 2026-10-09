@@ -41,7 +41,7 @@ Each requirement names how to check it.
 | D3 | — | The dashboard is a fixed renderer plus one JSON data block; Claude edits only the data. | Keeps edits small and safe, and the layout stable across workspaces. |
 | D4 | — | Lessons on the dashboard are append-only. | The user can scroll back through earlier chunks. |
 | D5 | — | The router is command-only; `syllabus` and `study` describe themselves as hand-over-only. | Ordinary questions must not start a study session. |
-| D6 | 2026-10-09 | Claude never runs git in a workspace. The dashboard footer suggests `git init` and committing after sessions, for users who want a history. | Commits stay under the user's control. |
+| D6 | 2026-10-09 | The dashboard footer suggests `git init` and committing after sessions, for users who want a history. | Commits stay under the user's control. |
 | D7 | 2026-10-09 | `study` reads the dashboard data once per session, and again only when someone else may have changed it (the user edited the file, or another session ran). | It used to re-read the whole, growing JSON before every update (about 10 times a session), although Claude made every later change itself. |
 | D8 | 2026-10-09 | `syllabus` writes `intent.md` at setup (R10). `syllabus.md` keeps its one-line `Goal:`; `study` does not read `intent.md`. | The `Goal:` line is short and gets revised; the original reasons guide later plan revisions (insert, track or park) and show how the aim changed. `study` does not need it, so it adds no reading per session. |
 
