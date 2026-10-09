@@ -14,12 +14,11 @@ Each requirement names how to check it.
 - **R2 · Understanding is shown, not assumed.** Every core idea of a studied unit gets a grade (solid · shaky · gap) from a Feynman check the user answers in free text. *Check:* no idea of a finished pass is left `todo`; no understanding check uses multiple choice.
 - **R3 · Least time.** Chunk size and support level adapt to the grades; parts can be skimmed or skipped. *Check:* the adapt rule in `study` changes chunk and support after each chunk.
 - **R4 · Sessions survive breaks.** A new session resumes from the workspace files alone, with no memory of the last chat. *Check:* `progress.md` is written after every chunk and every task, and holds the open questions at session end.
-- **R5 · One writer per file.** Only one skill may write each workspace file: `syllabus` writes `syllabus.md` and `intent.md`; `study` writes `progress.md`, `dashboard.html` and `tasks/`. The other skill may read the file but not change it. The one exception is the `[open]` → `[done: …]` marker, which `syllabus` sets in `progress.md`. This keeps the two skills from overwriting each other's changes, and makes it clear which skill to fix when a file is wrong. *Check:* the `owner:` labels in `shared/WORKSPACE.md`.
+- **R5 · One writer per file.** Only one skill may write each workspace file: `syllabus` writes `syllabus.md`; `study` writes `progress.md`, `dashboard.html` and `tasks/`. The other skill may read the file but not change it. The one exception is the `[open]` → `[done: …]` marker, which `syllabus` sets in `progress.md`. This keeps the two skills from overwriting each other's changes, and makes it clear which skill to fix when a file is wrong. *Check:* the `owner:` labels in `shared/WORKSPACE.md`.
 - **R6 · Portable workspace.** A workspace is plain files that work anywhere: local disk, a synced vault, a server. The dashboard opens from `file://` in any browser, with no build step and no server. *Check:* open `dashboard.html` from disk.
 - **R7 · Dashboard is the lesson, chat is the conversation.** Teaching material goes on the dashboard; chat carries probes, grades and short replies (under ~80 words). *Check:* every dashboard update is followed by one chat message with a **Your turn** line that matches the dashboard.
 - **R8 · Bounded detours.** A side topic is depth 1 and about 10 minutes; one that grows becomes a request for `syllabus`. *Check:* the side-topic rules in `study`.
 - **R9 · One entry point.** The user starts everything with `/learn-from`; `syllabus` and `study` run only when the router or each other hands over. *Check:* skill descriptions and `disable-model-invocation` on the router.
-- **R10 · The original intent is kept.** At setup, `syllabus` records why the user is studying this, in their own words, in `intent.md`. The original entry is never edited; later changes are added below it with a date. *Check:* every workspace has `intent.md` with its `## Original` section unchanged since setup.
 
 ## Non-goals
 
@@ -43,7 +42,6 @@ Each requirement names how to check it.
 | D5 | — | The router is command-only; `syllabus` and `study` describe themselves as hand-over-only. | Ordinary questions must not start a study session. |
 | D6 | 2026-10-09 | The dashboard footer suggests `git init` and committing after sessions, for users who want a history. | Commits stay under the user's control. |
 | D7 | 2026-10-09 | `study` reads the dashboard data once per session, and again only when someone else may have changed it (the user edited the file, or another session ran). | It used to re-read the whole, growing JSON before every update (about 10 times a session), although Claude made every later change itself. |
-| D8 | 2026-10-09 | `syllabus` writes `intent.md` at setup (R10). `syllabus.md` keeps its one-line `Goal:`; `study` does not read `intent.md`. | The `Goal:` line is short and gets revised; the original reasons guide later plan revisions (insert, track or park) and show how the aim changed. `study` does not need it, so it adds no reading per session. |
 
 ## Proposals
 
