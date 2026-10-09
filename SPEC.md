@@ -42,9 +42,3 @@ Each requirement names how to check it.
 | D5 | — | The router is command-only; `syllabus` and `study` describe themselves as hand-over-only. | Ordinary questions must not start a study session. |
 | D6 | 2026-10-09 | The dashboard footer suggests `git init` and committing after sessions, for users who want a history. | Commits stay under the user's control. |
 | D7 | 2026-10-09 | `study` reads the dashboard data once per session, and again only when someone else may have changed it (the user edited the file, or another session ran). | It used to re-read the whole, growing JSON before every update (about 10 times a session), although Claude made every later change itself. |
-
-## Proposals
-
-Ideas under consideration, not yet in the skills. Move one to Decisions when it is applied, or delete it when rejected.
-
-- **P2 · Split data out of the dashboard** (deferred: the user is testing it first). `dashboard.html` holds only the renderer; the state lives in a small `state.js`, and each unit's lessons in `lessons/<unit>.js`. Both load through `<script src>`, which works from `file://`. The renderer already shows only the current unit's lessons, so other units' lessons are dead weight in the file Claude reads. Side effect: renderer fixes reach old workspaces by copying `dashboard.html` again.
