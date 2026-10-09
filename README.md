@@ -5,6 +5,8 @@ Study from any source with one command, `/learn-from`.
 - `/learn-from` — show all study workspaces and continue one.
 - `/learn-from <book, topic or path>` — start or continue studying it.
 
+Design intent and past decisions: [`SPEC.md`](SPEC.md).
+
 ## Parts
 
 | Part | Job |
