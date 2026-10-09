@@ -8,7 +8,6 @@ A workspace is a folder named `<topic>.study/`.
 
 - **Default**: beside the main source file (the book's PDF or Markdown).
 - **No source file** (a course website, a codebase, a topic): ask the user once where to put it.
-- **Never inside a git repository** unless the user says so. Check with `git -C <dir> rev-parse --is-inside-work-tree` before creating.
 - Any path works: local disk, a synced vault, or a server. Nothing depends on the user's own computer.
 
 ```text

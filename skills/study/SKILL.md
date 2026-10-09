@@ -31,11 +31,11 @@ The dashboard is the lesson; the chat is the conversation.
 - **Dashboard** (lesson blocks in the data block): primers, worked examples, notes, diagrams, tasks, fixes, hints and solutions; the **Your turn** task; the queue; grades with reasons.
 - **Chat**: probes, grades (one line each, with the reason), short replies. After each dashboard update, one message: a bold label naming the step and place (e.g. **Primer · §3.2 is on the dashboard**), then one line **Your turn:** matching the dashboard. Keep chat messages under ~80 words.
 - **Question tool** (multiple choice) for choices only: continue or stop, keep trying / hint / solution. Anything that tests understanding (explanations, probes, task answers) stays free text in chat; options would turn recall into recognition.
-- **Write the dashboard** after the map, each primer or fix, each grade, when tasks are assigned, after each hint, solution or finished task, and at session end. Read the current data block first and change only what moved. Validate the JSON when a shell exists. The first time, copy `../../shared/dashboard.html` into the workspace and tell the user its path (⌘R refreshes it).
+- **Write the dashboard** after the map, each primer or fix, each grade, when tasks are assigned, after each hint, solution or finished task, and at session end. Read the data block once per session (at the start), and again only if someone else may have changed it (the user edited the file, or another session ran); otherwise change only what moved. Validate the JSON when a shell exists. The first time, copy `../../shared/dashboard.html` into the workspace and tell the user its path (⌘R refreshes it).
 
 ## Start of a session
 
-1. Read `syllabus.md` and `progress.md`. If the dashboard is missing, create it from the template and fill it from both files.
+1. Read `syllabus.md`, `progress.md` and the dashboard's data block. If the dashboard is missing, create it from the template and fill it from both files.
 2. If there are **open questions**, ask them first, in chat, one at a time; grade the answers and remove the ones answered well.
 3. Take the current unit, else the next unit in syllabus order whose `needs:` are met. Units that were studied before go to Step B; new ones to Step A.
 
@@ -82,7 +82,7 @@ When the user asks a question outside the current idea ("wait, what is a Green's
 
 ## Codebases
 
-When the user is working through code, explain the code as normal conversation; do not run this loop on the code itself. Run it on the **foundations** the code exposes (a side topic, or a unit `syllabus` planned). Never write workspace files into the repository unless the user says so.
+When the user is working through code, explain the code as normal conversation; do not run this loop on the code itself. Run it on the **foundations** the code exposes (a side topic, or a unit `syllabus` planned).
 
 ## Ending a session
 
