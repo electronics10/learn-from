@@ -31,7 +31,7 @@ Plan what to study, in what order, from which sources. You own `syllabus.md` and
 
 ## Revise (a request is open, or the user asks)
 
-1. Read `intent.md`, `syllabus.md`, `progress.md` and the open requests. Judge "on the path to the goal" against `intent.md`.
+1. Read `intent.md`, `syllabus.md`, `progress.md` and the open requests. Judge "on the path to the goal" against `intent.md`. An older workspace without `intent.md`: ask the setup intent question once and write it.
 2. For a **prerequisite gap**, estimate its size and propose with the question tool, recommended option first:
    - **Insert a unit**: about 3 or fewer new core ideas, fits one session, a source you already have covers it.
    - **Separate track**: a whole subject. Name a specific outside source (book + chapters). Create `<subject>.study/` with its own syllabus, add it under `## Tracks`, and mark the waiting unit as paused.
